@@ -1,14 +1,18 @@
 package com.example.msclinic.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "patient")
+@Table(name = "patients")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +24,8 @@ public class Patient {
     private String lastname;
     @Column(name = "gender")
     private String gender;
-    @Column(name = "attention")
-    private String attention;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Attention> attentions;
 
     public Long getId() {
         return id;
@@ -47,10 +51,12 @@ public class Patient {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public String getAttention() {
-        return attention;
+    public List<Attention> getAttentions() {
+        return attentions;
     }
-    public void setAttention(String attention) {
-        this.attention = attention;
+    public void setAttentions(List<Attention> attentions) {
+        this.attentions = attentions;
     }
+
+    
 }
