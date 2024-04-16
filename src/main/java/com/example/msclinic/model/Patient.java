@@ -13,7 +13,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
     @Column(name = "firstname")
     private String firtname;
     @Column(name = "lastname")
@@ -23,10 +23,10 @@ public class Patient {
     @Column(name = "attention")
     private String attention;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFirtname() {
